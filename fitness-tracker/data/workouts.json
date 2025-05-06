@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "id": 1746513055360,
+    "exercise": "Running",
+    "duration": "15",
+    "caloriesBurned": "200",
+    "date": "2025-05-03"
+  },
+  {
+    "id": 1746513071593,
+    "exercise": "Cycling",
+    "duration": "20",
+    "caloriesBurned": "230",
+    "date": "2025-05-04"
+  },
+  {
+    "id": 1746513089308,
+    "exercise": "Skipping",
+    "duration": "7",
+    "caloriesBurned": "190",
+    "date": "2025-05-05"
+  }
+]
