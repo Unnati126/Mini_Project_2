@@ -1,4 +1,34 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+import Home from './pages/Home';
+import Tracker from './pages/Tracker';
+import About from './pages/About';
+
+function App() {
+  return (
+    <div style={{ fontFamily: 'Arial, sans-serif', padding: '20px' }}>
+      <nav style={{ marginBottom: '20px' }}>
+        <Link to="/" style={{ marginRight: '10px' }}>Home</Link>
+        <Link to="/tracker" style={{ marginRight: '10px' }}>Fitness Tracker</Link>
+        <Link to="/about">About</Link>
+      </nav>
+      <hr />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/tracker" element={<Tracker />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </div>
+  );
+}
+
+export default App;
+
+
+
+
+
+/*import logo from './logo.svg';
 import './App.css';
 
 import React, { useEffect, useState } from 'react';
@@ -53,4 +83,4 @@ function App() {
   );
 
 
-export default App;
+export default App;*/
