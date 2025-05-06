@@ -1,4 +1,69 @@
-import { readWorkouts , writeWorkouts } from "../service/workouts.js";
+import { readWorkouts, writeWorkouts } from "../service/workouts.js";
+
+// GET all workouts
+export const getWorkouts = (req, res) => {
+  const workouts = readWorkouts();
+  res.json(workouts);
+};
+
+// GET workout by ID
+export const getWorkoutById = (req, res) => {
+  const workouts = readWorkouts();
+  const workout = workouts.find((w) => w.id === parseInt(req.params.id));
+  if (!workout) return res.status(404).json({ message: "Workout not found" });
+  res.json(workout);
+};
+
+// CREATE new workout
+export const createWorkout = (req, res) => {
+  const { name, duration, calories, date } = req.body;
+  const workouts = readWorkouts();
+
+  const newWorkout = {
+    id: Date.now(),
+    name,
+    duration,
+    calories,
+    date,
+  };
+
+  workouts.push(newWorkout);
+  writeWorkouts(workouts);
+
+  res.status(201).json(newWorkout);
+};
+
+// UPDATE workout
+export const updateWorkout = (req, res) => {
+  const { id } = req.params;
+  const { name, duration, calories, date } = req.body;
+
+  let workouts = readWorkouts();
+  const index = workouts.findIndex((w) => w.id === parseInt(id));
+  if (index === -1) return res.status(404).json({ message: "Workout not found" });
+
+  workouts[index] = { ...workouts[index], name, duration, calories, date };
+  writeWorkouts(workouts);
+
+  res.json(workouts[index]);
+};
+
+// DELETE workout
+export const deleteWorkout = (req, res) => {
+  const { id } = req.params;
+  const workouts = readWorkouts();
+  const newWorkouts = workouts.filter((w) => w.id !== parseInt(id));
+  writeWorkouts(newWorkouts);
+  res.status(204).end();
+};
+
+
+
+
+
+
+
+/*import { readWorkouts , writeWorkouts } from "../service/workouts.js";
 
 export const getWorkouts = () => {
     return readWorkouts();
@@ -54,4 +119,4 @@ export const deleteWorkout = (req, res) => {
   const newWorkouts = workouts.filter((w) => w.id !== parseInt(id));
   writeWorkouts(newWorkouts);
   res.status(204).end();
-};
+};*/

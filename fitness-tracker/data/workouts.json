@@ -8,16 +8,9 @@
   },
   {
     "id": 1746513071593,
-    "exercise": "Cycling",
-    "duration": "20",
+    "exercise": "Pilates",
+    "duration": "3",
     "caloriesBurned": "230",
     "date": "2025-05-04"
-  },
-  {
-    "id": 1746513089308,
-    "exercise": "Skipping",
-    "duration": "7",
-    "caloriesBurned": "190",
-    "date": "2025-05-05"
   }
 ]
