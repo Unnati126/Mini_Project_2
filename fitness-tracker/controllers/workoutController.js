@@ -1,7 +1,7 @@
 import { readWorkouts, writeWorkouts } from "../service/workouts.js";
 
 // GET all workouts
-export const getWorkouts = (req, res) => {
+export const getWorkouts = () => {
   const workouts = readWorkouts();
   res.json(workouts);
 };

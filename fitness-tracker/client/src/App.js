@@ -7,11 +7,12 @@ import About from './pages/About';
 function App() {
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', padding: '20px' }}>
-      <nav style={{ marginBottom: '20px' }}>
-        <Link to="/" style={{ marginRight: '10px' }}>Home</Link>
-        <Link to="/tracker" style={{ marginRight: '10px' }}>Fitness Tracker</Link>
-        <Link to="/about">About</Link>
-      </nav>
+      <nav className="d-flex justify-content-center gap-4 mb-4">
+  <Link to="/" className="btn btn-outline-primary">Home</Link>
+  <Link to="/tracker" className="btn btn-outline-success">Fitness Tracker</Link>
+  <Link to="/about" className="btn btn-outline-info">About</Link>
+</nav>
+
       <hr />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -84,3 +85,10 @@ function App() {
 
 
 export default App;*/
+
+
+/*<nav style={{ marginBottom: '20px' }}>
+        <Link to="/" style={{ marginRight: '10px' }}>Home</Link>
+        <Link to="/tracker" style={{ marginRight: '10px' }}>Fitness Tracker</Link>
+        <Link to="/about">About</Link>
+      </nav>*/

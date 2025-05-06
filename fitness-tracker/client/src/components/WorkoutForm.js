@@ -10,6 +10,18 @@ function WorkoutForm({ fetchWorkouts, editingWorkout, setEditingWorkout }) {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
+  /*const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    await axios.post("http://localhost:5002/api/workouts", {
+      name: form.name,
+      duration: form.duration,
+      calories: form.calories,
+      date: form.date,
+    });
+  };*/
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (editingWorkout) {
@@ -23,6 +35,14 @@ function WorkoutForm({ fetchWorkouts, editingWorkout, setEditingWorkout }) {
   };
 
   return (
+    /*<form onSubmit={handleSubmit}>
+      <input type="text" name="name" value={form.name} onChange={handleChange} />
+      <input type="text" name="duration" value={form.duration} onChange={handleChange} />
+      <input type="text" name="calories" value={form.calories} onChange={handleChange} />
+      <input type="date" name="date" value={form.date} onChange={handleChange} />
+      <button type="submit">Add Workout</button>
+    </form>*/
+
     <form onSubmit={handleSubmit}>
       <input name="date" value={form.date} onChange={handleChange} placeholder="Date" required />
       <input name="type" value={form.type} onChange={handleChange} placeholder="Type" required />
