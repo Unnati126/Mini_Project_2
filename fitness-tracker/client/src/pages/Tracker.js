@@ -36,7 +36,7 @@ function Tracker() {
 
   return (
     <div className="container mt-5">
-      <h2 className="text-center mb-4 text-primary">Fitness Tracker</h2>
+      <h2 className="text-center mb-4 text-primary">Fitness Tracker Record</h2>
 
       <form className="row g-3 mb-4" onSubmit={handleSubmit}>
         <div className="col-md-3">

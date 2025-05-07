@@ -1,5 +1,26 @@
-
 import express from "express";
+import {
+  getWorkouts,
+  getWorkoutById,
+  createWorkout,
+  updateWorkout,
+  deleteWorkout,
+} from "../controllers/workoutController.js";
+
+const router = express.Router();
+
+router.get("/", (_req, res) => res.json(getWorkouts()));
+router.get("/:id", getWorkoutById);
+router.post("/", createWorkout);
+router.put("/:id", updateWorkout);
+router.delete("/:id", deleteWorkout);
+
+export default router;
+
+
+
+
+/*import express from "express";
 import {
   getWorkouts,
   getWorkoutById,
@@ -28,4 +49,4 @@ router.put("/:id", updateWorkout);
 // DELETE a workout
 router.delete("/:id", deleteWorkout);
 
-export default router;
+export default router;*/

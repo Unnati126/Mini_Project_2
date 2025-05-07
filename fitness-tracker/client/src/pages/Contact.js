@@ -6,7 +6,7 @@ const Contact = () => {
     <div className="contact-container">
       <div className="contact-card">
         <h2>Contact Us</h2>
-        <p>If you have any questions or feedback, feel free to reach out!</p>
+        <p>If you have any queries or feedback, feel free to reach out!</p>
         <form onSubmit={(e) => {
           e.preventDefault();
           alert('Message sent!');

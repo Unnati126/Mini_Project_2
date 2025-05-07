@@ -1,4 +1,29 @@
 import fs from "fs";
+
+const filePath = "./data/workouts.json";
+
+export const readWorkouts = () => {
+  try {
+    const data = fs.readFileSync(filePath, "utf8");
+    return JSON.parse(data || "[]");
+  } catch (err) {
+    console.error("Error reading workouts.json", err);
+    return [];
+  }
+};
+
+export const writeWorkouts = (workouts) => {
+  try {
+    fs.writeFileSync(filePath, JSON.stringify(workouts, null, 2), "utf8");
+  } catch (err) {
+    console.error("Error writing to workouts.json", err);
+  }
+};
+
+
+
+
+/*import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -17,4 +42,4 @@ export const readWorkouts = () => {
 // Helper: Write workouts
 export const writeWorkouts = (workouts) => {
     fs.writeFileSync(dataFilePath, JSON.stringify(workouts, null, 2));
-};
+};*/
