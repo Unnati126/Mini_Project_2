@@ -10,6 +10,7 @@ import {
 const router = express.Router();
 
 router.get("/", (_req, res) => res.json(getWorkouts()));
+//router.get("/", getWorkouts); 
 router.get("/:id", getWorkoutById);
 router.post("/", createWorkout);
 router.put("/:id", updateWorkout);
