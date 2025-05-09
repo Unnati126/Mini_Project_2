@@ -8,7 +8,8 @@ import { fileURLToPath } from "url";
 
 
 const app = express();
-const PORT = process.env.PORT || 5002;
+//const PORT = process.env.PORT || 5002;
+const PORT = 5002;
 
 
 const __filename = fileURLToPath(import.meta.url);

@@ -12,5 +12,12 @@
     "duration": "3",
     "caloriesBurned": "230",
     "date": "2025-05-04"
+  },
+  {
+    "id": 1746708379889,
+    "exercise": "Running",
+    "duration": 10,
+    "caloriesBurned": 150,
+    "date": "2025-05-05"
   }
 ]

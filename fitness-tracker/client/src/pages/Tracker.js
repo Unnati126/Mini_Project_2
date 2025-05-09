@@ -93,8 +93,8 @@ function Tracker() {
 
       <h4 className="mb-3">Workout History</h4>
       <ul className="list-group">
-        {workouts.map((w, idx) => (
-          <li key={idx} className="list-group-item">
+        {workouts.map((w) => (
+          <li key={w.id} className="list-group-item">
             <strong>{w.exercise}</strong> — {w.duration} min — {w.caloriesBurned} cal — {w.date}
           </li>
         ))}
@@ -104,6 +104,7 @@ function Tracker() {
 }
 
 export default Tracker;
+
 
 
 
