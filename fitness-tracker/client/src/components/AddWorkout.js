@@ -20,7 +20,8 @@ function AddWorkout({ onWorkoutAdded }) {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:5002/api/workouts', formData);
+      //const res = await axios.post('http://localhost:5002/api/workouts', formData);
+       const res = await axios.post('/api/workouts', formData);
       alert('Workout added successfully!');
       setFormData({ exercise: '', duration: '', caloriesBurned: '', date: '' });
       if (onWorkoutAdded) onWorkoutAdded(res.data);
