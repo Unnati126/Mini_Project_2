@@ -1,5 +1,3 @@
-// src/components/Tracker.js
-
 import React, { useState } from 'react';
 import { useWorkouts } from '../context/WorkoutContext';
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import BMICalculator from '../components/BMICalculator'; 
 
 function Tracker() {
   const [workouts, setWorkouts] = useState([]);
@@ -62,10 +63,11 @@ function Tracker() {
       fetchWorkouts();
     } catch (err) {
       console.error('Error deleting workout:', err);
-    }
+    }    
   };
 
   return (
+    <div className="container mt-5">
     <div className="container mt-5">
       <h2 className="text-center mb-4 text-primary">Fitness Tracker Record</h2>
 
@@ -133,6 +135,8 @@ function Tracker() {
         ))}
       </ul>
     </div>
+    <BMICalculator />  
+</div>
   );
 }
 

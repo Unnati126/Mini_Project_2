@@ -1,4 +1,3 @@
-// src/context/WorkoutContext.js
 import { createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -18,47 +17,12 @@ export const WorkoutProvider = ({ children }) => {
     }
   };
 
-  const addWorkout = async (workout) => {
-    try {
-      await axios.post('/api/workouts', workout);
-      fetchWorkouts();
-    } catch (error) {
-      console.error('Error adding workout:', error);
-    }
-  };
-
-  const updateWorkout = async (id, updatedData) => {
-    try {
-      await axios.put(`/api/workouts/${id}`, updatedData);
-      fetchWorkouts();
-    } catch (error) {
-      console.error('Error updating workout:', error);
-    }
-  };
-
-  const deleteWorkout = async (id) => {
-    try {
-      await axios.delete(`/api/workouts/${id}`);
-      fetchWorkouts();
-    } catch (error) {
-      console.error('Error deleting workout:', error);
-    }
-  };
-
   useEffect(() => {
     fetchWorkouts();
   }, []);
 
-  return (
-    <WorkoutContext.Provider
-      value={{
-        workouts,
-        fetchWorkouts,
-        addWorkout,
-        updateWorkout,
-        deleteWorkout,
-      }}
-    >
+return (
+    <WorkoutContext.Provider value={{ workouts, fetchWorkouts }}>
       {children}
     </WorkoutContext.Provider>
   );
