@@ -2,16 +2,9 @@
   {
     "id": 1746513055360,
     "exercise": "Running",
-    "duration": "15",
-    "caloriesBurned": "200",
+    "duration": 15,
+    "caloriesBurned": 180,
     "date": "2025-05-03"
-  },
-  {
-    "id": 1746708379889,
-    "exercise": "Running",
-    "duration": 10,
-    "caloriesBurned": 150,
-    "date": "2025-05-05"
   },
   {
     "id": 1746853189984,
@@ -19,13 +12,6 @@
     "duration": 5,
     "caloriesBurned": 180,
     "date": "2025-05-09"
-  },
-  {
-    "id": 1746853319546,
-    "exercise": "Jumping Jacks",
-    "duration": 5,
-    "caloriesBurned": 80,
-    "date": "2025-05-05"
   },
   {
     "id": 1746853424476,

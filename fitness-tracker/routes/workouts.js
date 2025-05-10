@@ -20,17 +20,6 @@ router.get("/", (_req, res) => {
 });
 
 // ✅ GET workout by ID
-/*router.get("/:id", (req, res) => {
-  try {
-    const workout = getWorkoutById(req.params.id);
-    if (!workout) {
-      return res.status(404).json({ message: "Workout not found" });
-    }
-    res.json(workout);
-  } catch (err) {
-    res.status(500).json({ message: err.message || "Error retrieving workout" });
-  }
-});*/
 router.get("/:id", (req, res) => {
   try {
     const workout = getWorkoutById(req.params.id);
@@ -57,28 +46,19 @@ router.put("/:id", (req, res) => {
     const updatedWorkout = updateWorkout(req.params.id, req.body);
     res.json(updatedWorkout);
   } catch (err) {
-    res.status(500).json({ message: err.message || "Failed to update workout" });
+    res.status(500).json({ message: 'Error updating workout', error: err.message });
   }
 });
 
 // ✅ DELETE workout
 router.delete("/:id", (req, res) => {
   try {
-    deleteWorkout(req.params.id);
-    res.status(204).send();
+    const deletedWorkout = deleteWorkout(req.params.id);
+    res.json(deletedWorkout);
   } catch (err) {
-    res.status(500).json({ message: err.message || "Failed to delete workout" });
+    res.status(500).json({ message: 'Error deleting workout', error: err.message });
   }
 });
-
-/*router.delete("/:id", (req, res) => {
-  try {
-    const deleted = deleteWorkout(req.params.id);
-    res.status(204).send();
-  } catch (err) {
-    res.status(500).json({ message: err.message || "Failed to delete workout" });
-  }
-});*/
 
 export default router;
 

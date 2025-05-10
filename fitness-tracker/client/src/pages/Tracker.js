@@ -9,6 +9,7 @@ function Tracker() {
     caloriesBurned: '',
     date: '',
   });
+  const [editId, setEditId] = useState(null); // Track which workout to update
 
   useEffect(() => {
     fetchWorkouts();
@@ -30,11 +31,37 @@ function Tracker() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/api/workouts', form);
+      if (editId) {
+        // Update existing workout
+        await axios.put(`/api/workouts/${editId}`, form);
+        setEditId(null);
+      } else {
+        // Add new workout
+        await axios.post('/api/workouts', form);
+      }
       setForm({ exercise: '', duration: '', caloriesBurned: '', date: '' });
       fetchWorkouts();
     } catch (err) {
-      console.error('Error adding workout:', err);
+      console.error('Error submitting workout:', err);
+    }
+  };
+
+  const handleEdit = (workout) => {
+    setForm({
+      exercise: workout.exercise,
+      duration: workout.duration,
+      caloriesBurned: workout.caloriesBurned,
+      date: workout.date,
+    });
+    setEditId(workout.id);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`/api/workouts/${id}`);
+      fetchWorkouts();
+    } catch (err) {
+      console.error('Error deleting workout:', err);
     }
   };
 
@@ -87,15 +114,21 @@ function Tracker() {
           />
         </div>
         <div className="col-md-2">
-          <button className="btn btn-success w-100">Add Workout</button>
+          <button className="btn btn-success w-100">{editId ? 'Update' : 'Add'} Workout</button>
         </div>
       </form>
 
       <h4 className="mb-3">Workout History</h4>
       <ul className="list-group">
         {workouts.map((w) => (
-          <li key={w.id} className="list-group-item">
-            <strong>{w.exercise}</strong> — {w.duration} min — {w.caloriesBurned} cal — {w.date}
+          <li key={w.id} className="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <strong>{w.exercise}</strong> — {w.duration} min — {w.caloriesBurned} cal — {w.date}
+            </div>
+            <div>
+              <button className="btn btn-sm btn-warning me-2" onClick={() => handleEdit(w)}>Update</button>
+              <button className="btn btn-sm btn-danger" onClick={() => handleDelete(w.id)}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>
@@ -104,6 +137,8 @@ function Tracker() {
 }
 
 export default Tracker;
+
+
 
 
 
@@ -130,7 +165,7 @@ function Tracker() {
 
   const fetchWorkouts = async () => {
     try {
-      const res = await axios.get('http://localhost:5002/api/workouts');
+      const res = await axios.get('/api/workouts');
       setWorkouts(res.data);
     } catch (error) {
       console.error('Error fetching workouts', error);
@@ -144,7 +179,7 @@ function Tracker() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5002/api/workouts', form);
+      await axios.post('/api/workouts', form);
       setForm({ exercise: '', duration: '', caloriesBurned: '', date: '' });
       fetchWorkouts();
     } catch (err) {
