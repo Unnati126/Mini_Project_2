@@ -16,7 +16,7 @@ function Tracker() {
 
   const fetchWorkouts = async () => {
     try {
-      const res = await axios.get('http://localhost:5002/api/workouts');
+      const res = await axios.get('/api/workouts');
       setWorkouts(res.data);
     } catch (error) {
       console.error('Error fetching workouts', error);
@@ -30,7 +30,7 @@ function Tracker() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5002/api/workouts', form);
+      await axios.post('/api/workouts', form);
       setForm({ exercise: '', duration: '', caloriesBurned: '', date: '' });
       fetchWorkouts();
     } catch (err) {
@@ -112,9 +112,6 @@ export default Tracker;
 
 
 
-
-
-
 /*import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -144,19 +141,15 @@ function Tracker() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await axios.post('http://localhost:5002/api/workouts', form);
       setForm({ exercise: '', duration: '', caloriesBurned: '', date: '' });
       fetchWorkouts();
-    } catch (error) {
-      console.error('Error submitting workout', error);
+    } catch (err) {
+      console.error('Error adding workout:', err);
     }
-};
-
-
-
   };
 
   return (
@@ -198,13 +191,14 @@ const handleSubmit = async (e) => {
           />
         </div>
         <div className="col-md-3">
-        <input
+          <input
             type="date"
             className="form-control"
             name="date"
             value={form.date}
             onChange={handleChange}
-        />
+            required
+          />
         </div>
         <div className="col-md-2">
           <button className="btn btn-success w-100">Add Workout</button>
@@ -213,8 +207,8 @@ const handleSubmit = async (e) => {
 
       <h4 className="mb-3">Workout History</h4>
       <ul className="list-group">
-        {workouts.map((w, idx) => (
-          <li key={idx} className="list-group-item">
+        {workouts.map((w) => (
+          <li key={w.id} className="list-group-item">
             <strong>{w.exercise}</strong> — {w.duration} min — {w.caloriesBurned} cal — {w.date}
           </li>
         ))}
