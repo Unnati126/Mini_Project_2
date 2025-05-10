@@ -43,6 +43,7 @@ router.get("/:id", (req, res) => {
 // ✅ POST create workout
 router.post("/", (req, res) => {
   try {
+    console.log('Received data:', req.body);
     const newWorkout = createWorkout(req.body);
     res.status(201).json(newWorkout);
   } catch (err) {
