@@ -45,7 +45,7 @@ const About = () => {
           <li>🎯 Set realistic and achievable goals.</li>
         </ul>
       </section>
-      \n
+      
         <section className="stories">
         <h2>Success Stories</h2>
             <p>
